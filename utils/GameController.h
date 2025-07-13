@@ -5,17 +5,18 @@
 #ifndef GAMECONTROLLER_H
 #define GAMECONTROLLER_H
 
-enum Direction {
+enum InputType {
     UP,
     DOWN,
     LEFT,
     RIGHT,
+    EXIT,
     NONE
 };
 
 class GameController {
 public:
-    Direction getInputDirection(); // зчитує нажаті кнопки і повертає direction.
+    InputType getInput(); // зчитує нажаті кнопки і повертає InputType
 };
 
 #endif //GAMECONTROLLER_H

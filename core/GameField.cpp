@@ -4,11 +4,12 @@
 
 #include "GameField.h"
 
-GameField::GameField(int width, int height, char wallChar, const Snake& snake)
+GameField::GameField(int width, int height, char wallChar, Snake&& snake)
     : mapRenderer(width, height, wallChar)
 {
-    this->snake = std::make_shared<Snake>(snake);
+    this->snake = std::make_shared<Snake>(std::move(snake));
     gameObjects.push_back(this->snake);
+    mapRenderer.render(gameObjects);
 }
 
 void GameField::updateField() const {
@@ -17,4 +18,9 @@ void GameField::updateField() const {
     }
     mapRenderer.render(gameObjects);
 }
+
+std::shared_ptr<Snake> GameField::getSnake() const {
+    return this->snake;
+}
+
 

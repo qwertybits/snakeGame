@@ -36,6 +36,10 @@ public:
         y++;
         return *this;
     }
+
+    friend std::ostream& operator<<(std::ostream &os, const Position2D &pos) {
+        return os << "( " << pos.x << ", " << pos.y << " )";
+    }
 };
 
 #endif //POSITION2D_H

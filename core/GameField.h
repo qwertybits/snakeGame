@@ -15,8 +15,9 @@ class GameField {
     MapRenderer mapRenderer;
     std::shared_ptr<Snake> snake;
 public:
-    GameField(int width, int height, char wallChar, const Snake& snake);
+    GameField(int width, int height, char wallChar, Snake&& snake);
     void updateField() const;
+    [[nodiscard]] std::shared_ptr<Snake> getSnake() const;
 };
 
 #endif //GAMEFIELD_H
