@@ -9,15 +9,15 @@
 InputType GameController::getInput() {
     if (_kbhit()) {
         switch (_getch()) {
-            case 'w':
+            case 'w': case 'W':
                 return UP;
-            case 's':
+            case 's': case 'S':
                 return DOWN;
-            case 'a':
+            case 'a': case 'A':
                 return LEFT;
-            case 'd':
+            case 'd': case 'D':
                 return RIGHT;
-            case 'q':
+            case 'q' : case 'Q':
                 return EXIT;
             default:
                 return NONE;

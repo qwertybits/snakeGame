@@ -14,10 +14,13 @@ class GameField {
     std::vector<std::shared_ptr<GameObject>> gameObjects;
     MapRenderer mapRenderer;
     std::shared_ptr<Snake> snake;
+    GameController controller;
+    bool gameOver;
 public:
     GameField(int width, int height, char wallChar, Snake&& snake);
-    void updateField() const;
+    bool updateField();
     [[nodiscard]] std::shared_ptr<Snake> getSnake() const;
+    [[nodiscard]] bool isGameOver() const;
 };
 
 #endif //GAMEFIELD_H

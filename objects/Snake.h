@@ -17,10 +17,11 @@ class Snake : public GameObject {
         {LEFT, {-1, 0}}, {RIGHT, {1, 0}}
     };
     Position2D velocity;
-    GameController controller;
 public:
     Snake(char symbol, const Position2D &position, const Position2D &velocity);
     void update() override;
+    void setVelocityByInput(InputType input);
+    [[nodiscard]] Position2D getVelocity() const;
 };
 
 #endif //SNAKE_H
