@@ -16,6 +16,9 @@ class GameField {
     std::shared_ptr<Snake> snake;
     GameController controller;
     bool gameOver;
+
+    int width, height;
+    [[nodiscard]] bool checkSnakeCollision() const;
 public:
     GameField(int width, int height, char wallChar, Snake&& snake);
     bool updateField();

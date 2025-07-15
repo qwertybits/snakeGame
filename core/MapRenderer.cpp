@@ -6,20 +6,19 @@
 
 #include <iostream>
 
-MapRenderer::MapRenderer(const int width, const int height, const char wallChar) {
-    defaultDrawMap(width, height, wallChar);
+MapRenderer::MapRenderer(const int width, const int height, const char wallChar, const int borderWidth) : borderWidth(borderWidth) {
+    defaultDrawMap(width + borderWidth, height + borderWidth, wallChar);
 }
 
 void MapRenderer::render(const std::vector<std::shared_ptr<GameObject>>& objects) const {
     system("cls");
     std::vector<std::string> output = map;
     for (const auto& object : objects) {
-        auto pos = object->getPosition();
-        ++pos;
-        output[pos.getY()][pos.getX()] = object->getSymbol();
+        auto renderPos = object->getPosition() + Position2D(borderWidth, borderWidth);
+        output[renderPos.getY()][renderPos.getX()] = object->getSymbol();
     }
-    for (const auto& line : output) {
-        std::cout << line << std::endl;
+    for (const auto& renderLine : output) {
+        std::cout << renderLine << std::endl;
     }
 }
 
@@ -29,9 +28,9 @@ void MapRenderer::defaultDrawMap(int width, int height, char wallChar) {
             std::string line(width, wallChar);
             map.push_back(line);
         } else {
-            std::string line(width, ' ');
+            std::string line(width+1, ' ');
             line[0] = wallChar;
-            line[width - 1] = wallChar;
+            line[width-1] = wallChar;
             map.push_back(line);
         }
     }
