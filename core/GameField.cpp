@@ -16,7 +16,7 @@ bool GameField::checkSnakeCollision() const {
 }
 
 GameField::GameField(int width, int height, char wallChar, Snake&& snake)
-    : mapRenderer(width, height, wallChar, 1)
+    : mapRenderer(width, height, wallChar)
 {
     this->width = width;
     this->height = height;
