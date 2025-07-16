@@ -29,16 +29,16 @@ GameField::GameField(int width, int height, char wallChar, Snake&& snake)
 }
 
 bool GameField::updateField() {
-    if (checkSnakeCollision()) {
-        gameOver = true;
-        return false;
-    }
     auto userInput = controller.getInput();
     if (userInput == EXIT) {
         gameOver = true;
         return false;
     }
     snake->setVelocityByInput(userInput);
+    if (checkSnakeCollision()) {
+        gameOver = true;
+        return false;
+    }
     snake->update();
     mapRenderer.render(gameObjects);
     std::cout << snake->getPosition() << std::endl;
