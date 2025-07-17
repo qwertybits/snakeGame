@@ -5,6 +5,7 @@
 #ifndef GAMECONTROLLER_H
 #define GAMECONTROLLER_H
 
+//Види користувацького вводу
 enum InputType {
     UP,
     DOWN,
@@ -16,7 +17,7 @@ enum InputType {
 
 class GameController {
 public:
-    InputType getInput(); // зчитує нажаті кнопки і повертає InputType
+    InputType getInput(); // зчитує натиснуті кнопки та повертає InputType
 };
 
 #endif //GAMECONTROLLER_H

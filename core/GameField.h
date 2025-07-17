@@ -10,18 +10,20 @@
 #include "../objects/GameObject.h"
 #include "../objects/Snake.h"
 
-class GameField {
-    std::vector<std::shared_ptr<GameObject>> gameObjects;
-    MapRenderer mapRenderer;
-    std::shared_ptr<Snake> snake;
-    GameController controller;
-    bool gameOver;
 
-    int width, height;
-    [[nodiscard]] bool checkSnakeCollision() const;
+//Клас GameField відповідає за керування ігровим процесом і взаємодією ігрових об'єктів
+class GameField {
+    std::vector<std::shared_ptr<GameObject>> gameObjects; // список ігрових об'єктів (для рендерингу)
+    MapRenderer mapRenderer; // Об'єкт ігрової мапи (поля), відповідає за рендеринг в консоль
+    std::shared_ptr<Snake> snake; // Об'єкт змійки
+    GameController controller; // Об'єкт ігрового контролера (відповідає за userinput)
+    bool gameOver;  // Флаг що відповідає за кінець гри
+
+    int width, height; //Висота і ширина ігрового поля
+    [[nodiscard]] bool checkSnakeCollision() const; // Перевіряє всі випадки колізії змійки
 public:
     GameField(int width, int height, char wallChar, Snake&& snake);
-    bool updateField();
+    bool updateField(); // Відповідає за оновлення ігрового поля і всіх об'єктів та рендеринг
     [[nodiscard]] std::shared_ptr<Snake> getSnake() const;
     [[nodiscard]] bool isGameOver() const;
 };

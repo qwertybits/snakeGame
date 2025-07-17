@@ -6,6 +6,8 @@
 #define GAMEOBJECT_H
 #include "../utils/Position2D.h"
 
+
+//Інтерфейс для всіх ігрових об'єктів
 class GameObject {
     char SYMBOL {};
     Position2D position;

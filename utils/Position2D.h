@@ -6,6 +6,8 @@
 #define POSITION2D_H
 #include <stdexcept>
 
+
+//Вспоміжний клас для реалізації системи координат
 class Position2D {
     int x {}, y {};
 public:

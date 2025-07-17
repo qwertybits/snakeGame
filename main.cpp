@@ -5,7 +5,6 @@
 #include "core/GameField.h"
 
 int main() {
-    GameController controller;
     GameField gameField(18, 10, '#',
         Snake {'O', {0,0}, {1,0}});
     while (!gameField.isGameOver()) {

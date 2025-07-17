@@ -8,8 +8,9 @@
 
 
 bool GameField::checkSnakeCollision() const {
-    const auto nextPos = snake->getPosition() + snake->getVelocity();
+    const auto nextPos = snake->getPosition() + snake->getVelocity(); //заглядаємо в наступну позиції змійки
     if (nextPos.getX() >= width || nextPos.getY() >= height || nextPos.getX() < 0 || nextPos.getY() < 0) {
+        //якщо наступна позиція виходить за межі ігрового поля - значить це колізія
         return true;
     }
     return false;
@@ -29,17 +30,17 @@ GameField::GameField(int width, int height, char wallChar, Snake&& snake)
 }
 
 bool GameField::updateField() {
-    auto userInput = controller.getInput();
-    if (userInput == EXIT) {
+    auto userInput = controller.getInput(); // Отримуємо ввід користувача
+    if (userInput == EXIT) { // Якщо вихід - закінчуємо гру
         gameOver = true;
         return false;
     }
-    snake->setVelocityByInput(userInput);
-    if (checkSnakeCollision()) {
-        gameOver = true;
+    snake->setVelocityByInput(userInput); // Оновлюємо напрямок(швидкість) руху змійки на основі userinput'а
+    if (checkSnakeCollision()) { // Перевіряємо чи наступний крок змійки - це не колізія
+        gameOver = true; //якщо так - викидаємо з гри
         return false;
     }
-    snake->update();
+    snake->update(); // Оновлюємо стан змійки якщо все ОК
     mapRenderer.render(gameObjects);
     std::cout << snake->getPosition() << std::endl;
 
