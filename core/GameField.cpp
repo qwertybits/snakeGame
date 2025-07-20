@@ -35,16 +35,17 @@ bool GameField::updateField() {
         gameOver = true;
         return false;
     }
+
     if (userInput == DEBUG) { //debug
         snake->grow();
     }
+
     snake->setVelocityByInput(userInput); // Оновлюємо напрямок(швидкість) руху змійки на основі userinput'а
     if (checkSnakeCollision()) { // Перевіряємо чи наступний крок змійки - це не колізія
         gameOver = true; //якщо так - викидаємо з гри
         return false;
     }
     snake->update(); // Оновлюємо стан змійки якщо все ОК
-
     mapRenderer.render(gameObjects);
 
     for (const auto& part : snake->getRenderPositions()) {

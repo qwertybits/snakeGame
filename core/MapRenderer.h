@@ -4,7 +4,7 @@
 
 #ifndef MAPRENDERER_H
 #define MAPRENDERER_H
-#include <list>
+
 #include <memory>
 #include <string>
 #include <vector>

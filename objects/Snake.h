@@ -19,6 +19,7 @@ class Snake : public GameObject {
     };
     Position2D velocity;
     std::vector<Position2D> body;
+    bool isGrow = false;
 public:
     Snake(char symbol, const Position2D &position, const Position2D &velocity);
     void update() override;

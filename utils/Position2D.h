@@ -6,6 +6,8 @@
 #define POSITION2D_H
 #include <stdexcept>
 
+#include "GameController.h"
+
 
 //Вспоміжний клас для реалізації системи координат
 class Position2D {
@@ -41,6 +43,14 @@ public:
 
     friend std::ostream& operator<<(std::ostream &os, const Position2D &pos) {
         return os << "( " << pos.x << ", " << pos.y << " )";
+    }
+
+    bool operator==(const Position2D & pos) const {
+        return x == pos.x && y == pos.y;
+    }
+
+    static Position2D inverted(const Position2D &pos) {
+        return {-pos.x, -pos.y};
     }
 };
 
