@@ -12,6 +12,7 @@ enum InputType {
     LEFT,
     RIGHT,
     EXIT,
+    DEBUG,
     NONE
 };
 

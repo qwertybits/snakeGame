@@ -14,8 +14,10 @@ void MapRenderer::render(const std::vector<std::shared_ptr<GameObject>>& objects
     system("cls");
     std::vector<std::string> output = map;
     for (const auto& object : objects) {
-        auto renderPos = object->getPosition() + Position2D(1,1);
-        output[renderPos.getY()][renderPos.getX()] = object->getSymbol();
+        auto renderPositions = object->getRenderPositions();
+        for (const auto& renderPosition : renderPositions) {
+            output[renderPosition.getY() + 1][renderPosition.getX() + 1] = object->getSymbol();
+        }
     }
     for (const auto& renderLine : output) {
         std::cout << renderLine << std::endl;

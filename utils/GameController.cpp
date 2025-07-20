@@ -19,6 +19,8 @@ InputType GameController::getInput() {
                 return RIGHT;
             case 'q' : case 'Q':
                 return EXIT;
+            case 'g' : case 'G':
+                return DEBUG;
             default:
                 return NONE;
         }

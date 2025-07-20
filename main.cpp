@@ -15,5 +15,11 @@ int main() {
             std::cout << e.what() << std::endl;
         }
     }
+
+    // gameField.getSnake()->grow();
+    // gameField.getSnake()->update();
+    // for (const auto& part : gameField.getSnake()->getRenderPositions()) {
+    //     std::cout << part << " ";
+    // }
     return 0;
 }
