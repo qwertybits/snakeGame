@@ -13,7 +13,7 @@ Snake::Snake(char symbol, const Position2D& position, const Position2D& velocity
 }
 
 void Snake::update() {
-    Position2D previousPosition = getPosition();
+    Position2D previousPosition = getHeadPosition();
     if (this->isGrow) {
         body.push_back(body.back());
         this->isGrow = false;
@@ -23,8 +23,16 @@ void Snake::update() {
         body[i] = previousPosition;
         previousPosition = tmp;
     }
-    setPosition(getPosition() + velocity);
-    body.front() = getPosition();
+    setHeadPosition(getHeadPosition() + velocity);
+}
+
+std::vector<RenderInfo> Snake::getRenderInfo() const {
+    std::vector<RenderInfo> result;
+    result.emplace_back(getHeadPosition(), snakeSymbol);
+    for (int i = 1; i < body.size(); i++) {
+        result.emplace_back(body[i], tailSymbol);
+    }
+    return result;
 }
 
 void Snake::setVelocityByInput(InputType input) {
@@ -36,8 +44,12 @@ Position2D Snake::getVelocity() const {
     return velocity;
 }
 
-std::vector<Position2D> Snake::getRenderPositions() const {
-    return body;
+Position2D Snake::getHeadPosition() const {
+    return body.front();
+}
+
+void Snake::setHeadPosition(const Position2D &position) {
+    body.front() = position;
 }
 
 void Snake::grow() {

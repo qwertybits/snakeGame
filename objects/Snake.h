@@ -13,6 +13,10 @@
 #include "../utils/GameController.h"
 
 class Snake : public GameObject {
+
+    const char snakeSymbol = 'O';
+    const char tailSymbol = 'o';
+
     const std::map<InputType, Position2D> velocityMap = {
         {UP, {0, -1}}, {DOWN, {0, 1}},
         {LEFT, {-1, 0}}, {RIGHT, {1, 0}}
@@ -25,7 +29,9 @@ public:
     void update() override;
     void setVelocityByInput(InputType input);
     [[nodiscard]] Position2D getVelocity() const;
-    [[nodiscard]] std::vector<Position2D> getRenderPositions() const override;
+    [[nodiscard]] Position2D getHeadPosition() const;
+    void setHeadPosition(const Position2D &position);
+    [[nodiscard]] std::vector<RenderInfo> getRenderInfo() const override;
     void grow();
 };
 

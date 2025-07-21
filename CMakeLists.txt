@@ -14,4 +14,5 @@ add_executable(snakeGame main.cpp
         utils/GameController.h
         objects/Snake.cpp
         objects/Snake.h
+        utils/RenderInfo.h
 )
